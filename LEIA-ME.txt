@@ -1,0 +1,41 @@
+APP BITTENCOURT COM BANCO DE DADOS (GitHub + Supabase)
+
+O que é cada coisa
+- GitHub Pages: guarda e mostra o app (o "site").
+- Supabase: guarda os seus dados num banco online. Com a sua conta, os dados ficam iguais em qualquer aparelho.
+
+PARTE 1 - SUPABASE (banco de dados)
+1. Entre em supabase.com e crie uma conta gratuita.
+2. Crie um projeto (New project). Anote a senha do banco. Escolha uma região próxima (ex.: São Paulo).
+3. No menu, abra "SQL Editor" > "New query". Cole todo o texto do arquivo supabase.sql e toque em Run.
+4. Abra "Project Settings" > "API". Copie dois dados:
+   - Project URL (começa com https://)
+   - Chave "anon public"
+   NUNCA use a chave "service_role".
+5. Abra o arquivo config.js num editor de texto e troque COLE_AQUI_... pelos dois dados, mantendo as aspas.
+6. (Opcional, mais simples) Em "Authentication", na parte de login por e-mail (Email), desligue "Confirm email". Assim a conta funciona na hora, sem precisar confirmar por e-mail.
+
+PARTE 2 - GITHUB PAGES (publicar o app)
+1. Entre em github.com e crie uma conta gratuita.
+2. Crie um repositório novo (New repository), com o nome que quiser, marcado como Public.
+3. Toque em "uploading an existing file" e envie TODOS os arquivos desta pasta (já extraídos do zip), incluindo o config.js com os seus dados. Confirme com "Commit changes".
+4. Vá em Settings > Pages. Em "Branch", escolha main e a pasta /(root). Salve.
+5. Espere 1 a 2 minutos. O endereço aparece nessa mesma tela, no formato https://SEUUSUARIO.github.io/NOME-DO-REPOSITORIO
+
+PARTE 3 - PRIMEIRO USO
+1. Abra o endereço no Chrome do celular.
+2. Digite o seu e-mail e uma senha e toque em "Criar conta (primeira vez)".
+3. Se já tinha dados no app antigo, use o Backup (aba Preços > Backup dos dados) para levar para cá com "Restaurar".
+4. Depois que a sua conta estiver criada, no Supabase desligue a criação de novas contas (Authentication, opção "Allow new users to sign up"), para ninguém mais criar conta.
+5. No Chrome, toque nos três pontinhos e em "Instalar app" ou "Adicionar à tela inicial".
+
+SEGURANÇA
+- O repositório é público, então qualquer pessoa vê os arquivos do app e a chave "anon". Isso é normal: a chave anon é feita para ficar pública.
+- Os seus dados NÃO ficam no GitHub. Ficam no Supabase e só quem entra com a sua conta consegue ler e gravar (regra RLS do arquivo supabase.sql).
+- Não coloque a chave service_role em nenhum arquivo.
+
+COMO A SINCRONIZAÇÃO FUNCIONA
+- Cada alteração é salva no aparelho e enviada ao banco em seguida. Abaixo do título do app aparece "Sincronizado".
+- Sem internet, o app continua funcionando e envia tudo quando a conexão voltar.
+- Vale a versão mais recente. Não lance atendimentos em dois aparelhos ao mesmo tempo, porque o que foi salvo por último substitui o outro.
+- Ao voltar para o app, se outro aparelho tiver dados mais novos, a tela recarrega com eles.
